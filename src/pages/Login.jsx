@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
 
 function Login() {
@@ -7,9 +8,29 @@ function Login() {
     password: ""
   });
 
-  function submitHandler(event) {
+  async function submitHandler(event) {
     event.preventDefault();
     console.log("Login details", formData);
+
+    try {
+      const response = await fetch(`http://localhost:3000/restaurantOwner/signin`, {
+        method:"POST",
+        headers:{
+          "Content-Type" : "application/json"
+        },
+        body:JSON.stringify(formData)
+      })
+  
+      console.log("response", response);
+      // if(response.statusText === "ok"){
+      //   toast.success("Logged In successfully")
+      // }
+    } catch (error) {
+      console.log("error in login page!", error);
+    }
+
+    
+    
     
   }
 

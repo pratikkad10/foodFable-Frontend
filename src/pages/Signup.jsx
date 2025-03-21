@@ -11,9 +11,33 @@ function Signup() {
     confirmPassword:""
   });
 
-  function submitHandler(event) {
+  async function submitHandler(event) {
     event.preventDefault();
     console.log("Login details", formData);
+    try {
+      const response = await fetch(`http://localhost:3000/restaurantOwner/signup`, {
+        method:"POST",
+        headers:{
+          "Content-Type" : "application/json"
+        },
+        body:JSON.stringify(formData)
+      })
+  
+      console.log("response", response);
+
+      if(response.ok){
+        setFormData({
+          email: "",
+          name:"",
+          password: "",
+          confirmPassword:""
+        })
+      }
+    } catch (error) {
+      console.log("signup error", error);
+      
+    }
+    
     
   }
 
