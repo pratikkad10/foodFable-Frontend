@@ -1,40 +1,93 @@
-import React from "react";
+import React, { useState } from "react";
 import { GrRestaurant } from "react-icons/gr";
 import { IoSearchOutline } from "react-icons/io5";
+import { useNavigate } from "react-router-dom";
 
 function Navbar() {
-  return  <nav className="flex items-center justify-between bg-zinc-200 p-4 shadow">
-  {/* Logo/Brand */}
-  <div className="flex items-center">
-    <div className="text-blue-600 font-bold text-xl mr-4">
-      <span><GrRestaurant /></span> {/* Placeholder for logo  */}
-    </div>
-    <div className="flex space-x-6">
-      <a href="#" className="text-black text-xl font-semibold">FoodFable</a>
-    </div>
-  </div>
-  {/* Search and Profile */}
-  <div className="flex items-center space-x-4">
-    <div className="relative">
-      <input
-        type="text"
-        className="border rounded-md p-1 pl-10 pr-4 text-gray-600"
-        placeholder="Search"
-      />
-      <span className="absolute left-3 top-2 text-gray-400">
-      <IoSearchOutline size={20} />
-      </span>
-    </div>
-    
-    {/* <img 
-      src="profile_picture_url" 
-      alt="Profile" 
-      className="w-10 h-10 rounded-full border border-gray-300"
-    /> */}
-  </div>
-</nav>
+  const navigate = useNavigate();
+  const [isLogged, setIsLoggedIn] = useState(true);
 
-;
+  function handleLogout() {
+    setIsLoggedIn(false); // Set logged-in state to false
+    navigate("/"); // Redirect to home or login page after logout
+  }
+
+  function goToHome() {
+    navigate("/");
+  }
+
+  return (
+    <nav className="flex items-center justify-between bg-zinc-200 p-4 shadow">
+      {/* Logo/Brand */}
+      <div className="flex items-center">
+        <div className="text-gray-600 font-bold text-xl mr-1 cursor-pointer">
+          <span>
+            <GrRestaurant size={35} />
+          </span>
+        </div>
+        <div className="flex space-x-6">
+          <a
+            onClick={goToHome}
+            href="#"
+            className="text-black text-xl font-semibold"
+          >
+            FoodFable
+          </a>
+        </div>
+      </div>
+
+      {/* Search and Profile */}
+      <div className="flex items-center space-x-4">
+        <div className="relative flex gap-4">
+          <form action="">
+            <input
+              type="text"
+              className="border rounded-md p-1 pl-2 pr-10 text-gray-600"
+              placeholder="Search"
+            />
+            <button>
+              <span className="absolute left-50 top-2 cursor-pointer text-gray-900">
+                <IoSearchOutline size={20} />
+              </span>
+            </button>
+          </form>
+
+          {/* Conditional Rendering */}
+          {!isLogged ? (
+            <>
+              <button
+                onClick={() => navigate("/user/signin")}
+                className="px-4 py-1 bg-zinc-800 rounded-md text-white font-semibold hover:bg-zinc-700 cursor-pointer"
+              >
+                Login
+              </button>
+              <button
+                onClick={() => navigate("/user/signup")}
+                className="px-4 py-1 bg-zinc-800 rounded-md text-white font-semibold hover:bg-zinc-700 cursor-pointer"
+              >
+                Signup
+              </button>
+            </>
+          ) : (
+            <>
+              <button
+                onClick={handleLogout}
+                className="px-4 py-1 bg-red-600 rounded-md text-white font-semibold hover:bg-red-500 cursor-pointer"
+              >
+                Logout
+              </button>
+              <button
+                onClick={() => navigate("/restaurant/dashboard")}
+                className="px-4 py-1 bg-zinc-800 rounded-md text-white font-semibold hover:bg-zinc-700 cursor-pointer"
+              >
+                Dashboard
+              </button>
+            </>
+          )}
+        </div>
+      </div>
+    </nav>
+  );
 }
 
 export default Navbar;

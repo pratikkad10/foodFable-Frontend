@@ -1,8 +1,13 @@
 import React, { useState } from "react";
 import toast from "react-hot-toast";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function Login() {
+
+  const navigate= useNavigate();
+
+  
+
   const [formData, setFormData] = useState({
     email: "",
     password: ""
@@ -13,7 +18,7 @@ function Login() {
     console.log("Login details", formData);
 
     try {
-      const response = await fetch(`http://localhost:3000/restaurantOwner/signin`, {
+      const response = await fetch(`http://localhost:3000/user/signin`, {
         method:"POST",
         headers:{
           "Content-Type" : "application/json"
@@ -22,6 +27,7 @@ function Login() {
       })
   
       console.log("response", response);
+      navigate('/');
       // if(response.statusText === "ok"){
       //   toast.success("Logged In successfully")
       // }
@@ -46,7 +52,7 @@ function Login() {
 
 
   return (
-    <div className="flex flex-row gap-0 h-[100vh]  bg-zinc-200">
+    <div className="flex flex-row gap-0 h-[100vh]  bg-zinc-300">
       <div className="left  w-1/2 mx-auto relative">
         <img
           className="h-full w-full "
@@ -93,7 +99,7 @@ function Login() {
           
           <div className="mt-4 flex flex-col ">
           <button className="px-4 py-1 bg-blue-500 rounded-md text-white font-semibold hover:bg-blue-400 cursor-pointer">Signin</button>
-          <span className="text-blue-500 mt-2 cursor-pointer font-semibold"><Link>Don't have an account ?</Link></span>
+          <span  onClick={() => navigate("/user/signup")} className="text-blue-500 mt-2 cursor-pointer font-semibold"><Link>Don't have an account ?</Link></span>
           <div className="h-[0.1rem] w-45 rounded-lg bg-blue-500"></div>
         </div>
         </form>
