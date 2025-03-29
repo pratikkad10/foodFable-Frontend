@@ -25,8 +25,6 @@ function Home() {
 
 
   return (
-    <div className=''>
-    {/* <Navbar/> */}
     <div className='flex justify-center  gap-4 items-center flex-wrap p-4 bg-zinc-300'>
 
       {
@@ -36,10 +34,6 @@ function Home() {
       }
 
     </div>
-       
-    {/* <Footer/> */}
-    </div>
-    
   )
 }
 
