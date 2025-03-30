@@ -31,9 +31,10 @@ function AddRestaurant() {
 
   async function formSubmitHandler(event) {
     event.preventDefault();
-    console.log("form sumbit details", formData);
+    const token = localStorage.getItem("authToken");
     try {
-      const res= await createRestaurant(formData);
+      const res= await createRestaurant(formData, token);
+      console.log("added restaurant response ",res);
     } catch (error) {
       console.log(error.message);
     }
