@@ -12,7 +12,7 @@ function Home() {
   async function fetchRestaurants(){
       try {
         const data=await getRestaurants();
-        console.log(data.data.restaurants);
+        // console.log(data.data.restaurants);
         setRestaurants(data.data.restaurants);
       } catch (error) {
         console.log("Error in fetch restaurants", error.message);

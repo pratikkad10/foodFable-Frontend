@@ -10,8 +10,12 @@ export const getRestaurants = () => {
 };
 
 // POST request
-export const createRestaurant = (data) => {
-  return api.post('/restaurant/add', data);
+export const createRestaurant = (data, token) => {
+  return api.post('/restaurant/add', data, {
+    headers: {
+      Authorization: `Bearer ${token}`, 
+    },
+  });
 };
 
 // PUT request
@@ -28,5 +32,16 @@ export const deleteRestaurant = (id) => {
 export const fetchRestaurantById =(id)=>{
     return api.get(`/restaurant/${id}`);
 }
+
+export const fetchOwnerRestaurants = (token) => {
+  return api.get(`/restaurant/OwnerRestaurants`, {
+    headers: {
+      Authorization: `Bearer ${token}`, 
+    },
+  });
+};
+
+
+
 
 

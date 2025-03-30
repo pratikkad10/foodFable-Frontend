@@ -12,7 +12,7 @@ function Login({isLoggedIn, setIsLoggedIn}) {
 
   async function submitHandler(event) {
     event.preventDefault();
-    console.log("Login details", formData);
+    // console.log("Login details", formData);
 
     try {
       const response = await fetch(`http://localhost:3000/user/signin`, {
