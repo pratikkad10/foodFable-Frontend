@@ -3,13 +3,14 @@ import { GrRestaurant } from "react-icons/gr";
 import { IoSearchOutline } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
 
-function Navbar() {
+function Navbar({isLoggedIn, setIsLoggedIn}) {
   const navigate = useNavigate();
-  const [isLogged, setIsLoggedIn] = useState(true);
+  
 
   function handleLogout() {
-    setIsLoggedIn(false); // Set logged-in state to false
-    navigate("/"); // Redirect to home or login page after logout
+    setIsLoggedIn(false); 
+    localStorage.removeItem("authToken");
+    navigate("/"); 
   }
 
   function goToHome() {
@@ -53,7 +54,7 @@ function Navbar() {
           </form>
 
           {/* Conditional Rendering */}
-          {!isLogged ? (
+          {!isLoggedIn ? (
             <>
               <button
                 onClick={() => navigate("/user/signin")}

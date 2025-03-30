@@ -1,7 +1,8 @@
 import React, { useState } from "react";
+import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
 
-function Signup() {
+function Signup({ isLoggedIn, setIsLoggedIn }) {
   const [formData, setFormData] = useState({
     email: "",
     name: "",
@@ -12,22 +13,20 @@ function Signup() {
 
   async function submitHandler(event) {
     event.preventDefault();
-    console.log("Signup details", formData);
     try {
-      const response = await fetch(
-        `http://localhost:3000/user/signup`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(formData),
-        }
-      );
+      const response = await fetch(`http://localhost:3000/user/signup`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
 
-      console.log("response", response);
+      const data = await response.json();
 
       if (response.ok) {
+        setIsLoggedIn(true);
+        toast.success("Signup successful! You are now logged in.");
         setFormData({
           email: "",
           name: "",
@@ -35,9 +34,11 @@ function Signup() {
           confirmPassword: "",
           accountType: "",
         });
+      } else {
+        toast.error(data.message || "Signup failed. Please try again.");
       }
     } catch (error) {
-      console.log("Signup error", error);
+      toast.error("Something went wrong. Please try again later.");
     }
   }
 
@@ -99,7 +100,7 @@ function Signup() {
               name="accountType"
               value={formData.accountType}
               onChange={changeHandler}
-               className="border-1 border-zinc-400 p-1 mb-2 w-full rounded-md"
+              className="border-1 border-zinc-400 p-1 mb-2 w-full rounded-md"
             >
               <option value="" disabled>
                 Choose a role

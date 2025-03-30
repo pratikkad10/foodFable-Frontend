@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import toast from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
 
-function Login() {
+function Login({isLoggedIn, setIsLoggedIn}) {
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
@@ -30,6 +30,7 @@ function Login() {
         const { token } = data;
         if (token) {
           localStorage.setItem("authToken", token);
+          setIsLoggedIn(true);
           toast.success("Logged in successfully!");
           navigate("/"); 
         } else {
