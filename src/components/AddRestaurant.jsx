@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { IoMdArrowRoundBack } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
 import { createRestaurant } from "../services/getService";
+import toast from "react-hot-toast";
 
 function AddRestaurant() {
   const navigate = useNavigate();
@@ -34,11 +35,15 @@ function AddRestaurant() {
     const token = localStorage.getItem("authToken");
     try {
       const res= await createRestaurant(formData, token);
-      console.log("added restaurant response ",res);
+      if(res.status === 200){
+        toast.success("Restaurant Added!");
+      }else{
+        toast.error("Something went Wrong!");
+      }
     } catch (error) {
       console.log(error.message);
     }
-    navigate("/restaurants");
+    navigate("/restaurant");
   }
 
   return (

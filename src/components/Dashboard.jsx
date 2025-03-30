@@ -19,8 +19,9 @@ function Dashboard() {
     }
 
     try {
-      const data = await fetchOwnerRestaurants(token);
-      setRestaurants(data.data.restaurants);
+      const response = await fetchOwnerRestaurants(token);
+      console.log("API Response:", response.data.data); 
+      setRestaurants(response.data.data);
     } catch (error) {
       toast.error("Failed to fetch restaurants. Please try again.");
     }
@@ -31,7 +32,7 @@ function Dashboard() {
   }, []);
 
   return (
-    <div className="flex justify-center items-center p-4 flex-col gap-2 bg-zinc-300">
+    <div className="flex justify-center items-center flex-col p-4 gap-2 pt-4 bg-zinc-300">
       <button
         onClick={() => navigate("/restaurant/new")}
         className="px-4 flex justify-center items-center gap-2 py-2 bg-zinc-800 text-white font-semibold rounded-md cursor-pointer hover:bg-zinc-700"
@@ -40,7 +41,7 @@ function Dashboard() {
       </button>
 
       <div className="flex justify-center gap-4 items-center flex-wrap p-4">
-        {restaurants &&
+        {restaurants.length  &&
           restaurants.map((restaurant, index) => (
             <Card restaurant={restaurant} key={index} />
           ))}

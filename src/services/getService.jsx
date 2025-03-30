@@ -34,13 +34,12 @@ export const fetchRestaurantById =(id)=>{
 }
 
 export const fetchOwnerRestaurants = (token) => {
-  return api.get(`/restaurant/OwnerRestaurants`, {
+  return api.get(`/restaurant/owner`, {
     headers: {
       Authorization: `Bearer ${token}`, 
     },
   });
 };
-
 
 
 
