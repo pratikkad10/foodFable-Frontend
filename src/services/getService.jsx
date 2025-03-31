@@ -19,7 +19,7 @@ export const createRestaurant = (data, token) => {
 };
 
 // PUT request
-export const updateRestaurant = (id, updatedData) => {
+export const updateRestaurant = (id, updatedData, token) => {
   return api.put(`/restaurant/edit/${id}`, updatedData);
 };
 
@@ -41,6 +41,14 @@ export const fetchOwnerRestaurants = (token) => {
   });
 };
 
+
+export const addReview = (id, data, token) => {
+  return api.post(`/restaurant/review/${id}`,data, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+};
 
 
 
