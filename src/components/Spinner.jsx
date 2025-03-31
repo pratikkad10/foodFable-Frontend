@@ -2,7 +2,7 @@ import React from 'react'
 
 function Spinner() {
   return (
-    <div><span class="loader"></span></div>
+    <div className='loader h-[100%] w-auto'></div>
   )
 }
 
