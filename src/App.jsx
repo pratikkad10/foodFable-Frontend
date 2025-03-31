@@ -16,7 +16,7 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   
   return (
-    <>
+    <div>
     <Navbar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
         <Routes>
           <Route path='/' element={<Home/>} />
@@ -30,7 +30,7 @@ function App() {
 
     <Footer/>
       <Toaster />
-    </>
+    </div>
   )
 }
 
