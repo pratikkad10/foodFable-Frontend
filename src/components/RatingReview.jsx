@@ -33,7 +33,7 @@ const RatingReview = ({ id }) => {
   };
 
   return (
-    <div className="w-full mx-auto p-4 mb-2 rounded-lg shadow-lg bg-zinc-200">
+    <div className="w-[100%] mx-auto ml-0  mb-2 rounded-lg shadow-lg ">
       <h2 className="text-lg font-semibold mb-2">Rate and Review</h2>
       <div className="flex gap-1 mb-3">
         {[1, 2, 3, 4, 5].map((star) => (

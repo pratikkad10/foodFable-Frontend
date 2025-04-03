@@ -50,20 +50,12 @@ function Signup({ isLoggedIn, setIsLoggedIn }) {
   }
 
   return (
-    <div className="flex flex-row gap-0 h-[100vh] bg-zinc-300">
-      <div className="left w-1/2 mx-auto relative">
-        <img
-          className="h-full w-full"
-          src="https://images.unsplash.com/photo-1526318896980-cf78c088247c?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-          alt=""
-        />
-        <p className="absolute text-zinc-200 opacity-75 top-20 text-5xl font-bold left-3">
-          Let's get started...!
-        </p>
-      </div>
+    <div className="flex flex-row justify-center items-center  gap-0  text-zinc-50">
+      
 
-      <div className="right p-40 w-1/2 mx-auto">
-        <p className="text-xl font-semibold mb-6">Signup</p>
+      <div className="right px-10 mt-20  w-1/2 mx-auto">
+        <p className="text-2xl font-semibold p-1 text-center">Sign Up & Savor the Best Food Tales!</p>
+        <div className="h-1 w-[60%] ml-[20%] rounded-full mb-6 bg-blue-300"></div>
         <form onSubmit={submitHandler}>
           <div>
             <label htmlFor="Name">Name</label>
@@ -100,13 +92,13 @@ function Signup({ isLoggedIn, setIsLoggedIn }) {
               name="accountType"
               value={formData.accountType}
               onChange={changeHandler}
-              className="border-1 border-zinc-400 p-1 mb-2 w-full rounded-md"
+              className="border-1 border-zinc-400  p-1 mb-2 w-full rounded-md"
             >
-              <option value="" disabled>
+              <option className="text-zinc-900" value="" disabled>
                 Choose a role
               </option>
-              <option value="Owner">Owner</option>
-              <option value="User">User</option>
+              <option className="text-zinc-900" value="Owner">Owner</option>
+              <option className="text-zinc-900" value="User">User</option>
             </select>
           </div>
 

@@ -47,14 +47,15 @@ function AddRestaurant() {
   }
 
   return (
-    <div className="m-2 w-1/2 mx-auto text-zinc-900 bg-zinc-200 p-6 rounded-md">
-      <div
+    <div className=" w-1/2 mx-auto text-zinc-50  p-6 rounded-md">
+      {/* <div
         onClick={backClickHandler}
-        className="h-10 w-10 bg-zinc-200 hover:bg-zinc-100 rounded-full flex justify-center items-center"
+        className="h-10 w-10 bg-zinc-700 hover:bg-zinc-600 rounded-full flex justify-center items-center"
       >
         <IoMdArrowRoundBack size={22} />
-      </div>
-      <h1 className="my-4 text-2xl font-bold ">Add new restaurant</h1>
+      </div> */}
+      <h1 className="mt-3 text-center text-2xl font-bold ">Expand Your Reach – Add Your Restaurant to FoodFable!</h1>
+      <div className="h-1 w-[90%] ml-[5%] rounded-full mb-6 bg-blue-300"></div>
       <form onSubmit={formSubmitHandler} action="">
         <div className="flex flex-col gap-2">
           <label className="font-semibold" htmlFor="name">

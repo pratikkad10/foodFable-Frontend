@@ -1,9 +1,11 @@
-import React from 'react'
+import React from "react";
 
 function Spinner() {
   return (
-    <div className='loader h-[100%] w-auto'></div>
-  )
+    <div className="flex h-screen justify-center items-center">
+      <div className="loader  "></div>
+    </div>
+  );
 }
 
-export default Spinner
+export default Spinner;

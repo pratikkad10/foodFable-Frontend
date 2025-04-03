@@ -18,10 +18,10 @@ function Navbar({isLoggedIn, setIsLoggedIn}) {
   }
 
   return (
-    <nav className="flex items-center justify-between bg-zinc-200 p-4 shadow">
+    <nav className="flex items-center justify-between  p-4 shadow">
       {/* Logo/Brand */}
       <div className="flex items-center">
-        <div className="text-gray-600 font-bold text-xl mr-1 cursor-pointer">
+        <div className="text-zinc-50 font-bold text-xl mr-1 cursor-pointer">
           <span>
             <GrRestaurant size={35} />
           </span>
@@ -30,7 +30,7 @@ function Navbar({isLoggedIn, setIsLoggedIn}) {
           <a
             onClick={goToHome}
             href="#"
-            className="text-black text-xl font-semibold"
+            className="text-zinc-50 text-xl font-semibold"
           >
             FoodFable
           </a>
@@ -43,7 +43,7 @@ function Navbar({isLoggedIn, setIsLoggedIn}) {
           <form action="">
             <input
               type="text"
-              className="border rounded-md p-1 pl-2 pr-10 text-gray-600"
+              className="border rounded-md p-1 pl-2 pr-10 text-zinc-100"
               placeholder="Search"
             />
             <button>
@@ -57,17 +57,19 @@ function Navbar({isLoggedIn, setIsLoggedIn}) {
           {!isLoggedIn ? (
             <>
               <button
-                onClick={() => navigate("/user/signin")}
-                className="px-4 py-1 bg-zinc-800 rounded-md text-white font-semibold hover:bg-zinc-700 cursor-pointer"
-              >
-                Login
-              </button>
-              <button
                 onClick={() => navigate("/user/signup")}
-                className="px-4 py-1 bg-zinc-800 rounded-md text-white font-semibold hover:bg-zinc-700 cursor-pointer"
+                className="px-4 py-1 bg-zinc-100 rounded-md text-zinc-900 font-semibold hover:bg-zinc-300 cursor-pointer"
               >
                 Signup
               </button>
+
+              <button
+                onClick={() => navigate("/user/signin")}
+                className="px-4 py-1 bg-[#171717] rounded-md text-white font-semibold hover:bg-zinc-800 cursor-pointer"
+              >
+                Login
+              </button>
+              
             </>
           ) : (
             <>

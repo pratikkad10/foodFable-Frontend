@@ -38,52 +38,55 @@ function RestaurantDetail() {
       {isLoggedIn === true ? (
         <Spinner />
       ) : (
-        <div className="bg-zinc-300 min-h-[100vh] py-4 w-auto flex flex-col justify-center items-center">
-          <div className="bg-zinc-200 w-[75%] h-100 flex rounded-lg overflow-hidden">
+        <div className="text-zinc-50  min-h-[100vh] py-4 flex flex-col justify-center items-center">
+          <div className="text-zinc-50 w-[75%] h-100 flex rounded-lg overflow-hidden">
             <img
               className="rounded-lg w-[50%] h-full "
               src={restaurant.imageUrl}
               alt=""
             />
             <div className=" px-10 flex flex-col justify-center  ">
-              <div className="text-4xl font-bold py-2 mb-4 text-zinc-900">
+              <div className="text-4xl font-bold py-2 mb-4 text-zinc-50">
                 {restaurant.name}
               </div>
-              <div className="text-xl text-zinc-800 py-1">
+              <div className="text-xl text-zinc-100 py-1">
                 {restaurant.city}
               </div>
-              <div className="text-xl text-zinc-800 py-1">
+              <div className="text-xl text-zinc-100 py-1">
                 {restaurant.address}
               </div>
-              <div className="text-xl text-zinc-800 py-1">
+              <div className="text-xl text-zinc-100 py-1">
                 {restaurant.contact}
               </div>
-              <div className="text-xl text-zinc-800 py-1">
+              <div className="text-xl text-zinc-100 py-1">
                 {restaurant.email}
               </div>
               <a className="text-blue-500 text-xl " href={restaurant.website}>
                 {restaurant.website}
               </a>
-              <div className="text-xl text-zinc-800 py-1">
+              <div className="text-xl text-zinc-100 py-1">
                 {restaurant.status} now
               </div>
-              <div className="text-yellow-500 text-xl mt-6 font-bold">
+              <div className="text-yellow-600 text-xl mt-6 font-bold">
                 ★ {averageRating}
               </div>
             </div>
           </div>
 
-          <div className="reviews w-[75%]  mt-4 bg-zinc-200 rounded-lg shadow-lg p-4 my-4">
+          <div className="reviews w-[75%] text-zinc-50  mt-6  rounded-lg shadow-lg p-4 my-4">
             <RatingReview id={id} />
+            
+            <div className="mt-6 flex flex-col justify-center  w-full">
             <h1 className="text-lg font-semibold ">Reviews</h1>
             {restaurant.reviews &&
               restaurant.reviews.map((review, index) => {
                 return (
-                  <li className="font-normal py-1 " key={index}>
+                  <ul className="font-normal py-2 bg-[#2f3331] h-10 my-2 rounded-xl px-4" key={index}>
                     {review.comment}
-                  </li>
+                  </ul>
                 );
               })}
+              </div>
           </div>
         </div>
       )}

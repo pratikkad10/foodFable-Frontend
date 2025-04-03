@@ -27,19 +27,21 @@ function Card({ restaurant }) {
   return (
     <div
       onClick={() => clickHandler(restaurant)}
-      className="max-w-sm rounded-lg overflow-hidden shadow-lg  shadow-zinc-600 bg-zinc-100 cursor-pointer hover:shadow-2xl"
+      className='hover:scale-110 transition duration-300 ease-in 
+    gap-3 overflow-hidden mt-10 ml-4 rounded-xl bg-[#171717]
+    hover:shadow-[0_20px_50px_rgba(8,_112,_184,_0.7)]'
     >
       <img className="w-80 h-52"  src={restaurant.imageUrl} alt="Restaurant" />
-      <div className="px-4 py-2 text-zinc-900 flex flex-col gap-2">
+      <div className="px-4 py-2 text-zinc-50 flex flex-col gap-2">
         <div className="font-bold text-xl ">{restaurant.name}</div>
-        <p className="text-gray-700 text-base">{restaurant.city}</p>
-        <p className="text-gray-700 text-sm ">{restaurant.address}</p>
+        <p className="text-zinc-200 text-base">{restaurant.city}</p>
+        <p className="text-zinc-200  text-sm ">{restaurant.address}</p>
         <a className="text-blue-500 text-sm " href={restaurant.website}>
           {restaurant.website}
         </a>
       </div>
       <div className="px-4 pt-4 pb-2 flex justify-between items-center">
-        <p className="text-gray-700 font-semibold text-sm mt-2">
+        <p className="text-zinc-100 font-semibold text-sm mt-2">
           {restaurant.status}
         </p>
         <span className="text-yellow-500 font-bold">★ {averageRating}</span>

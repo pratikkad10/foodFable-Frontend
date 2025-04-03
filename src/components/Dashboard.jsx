@@ -32,7 +32,7 @@ function Dashboard() {
   }, []);
 
   return (
-    <div className="flex justify-center items-center flex-col p-4 gap-2 pt-4 bg-zinc-300">
+    <div className="flex justify-center items-center flex-col p-4 gap-2 pt-4 ">
       <button
         onClick={() => navigate("/restaurant/new")}
         className="px-4 flex justify-center items-center gap-2 py-2 bg-zinc-800 text-white font-semibold rounded-md cursor-pointer hover:bg-zinc-700"

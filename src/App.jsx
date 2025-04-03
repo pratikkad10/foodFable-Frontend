@@ -10,13 +10,15 @@ import RestaurantDetail from './components/RestaurantDetail';
 import Dashboard from './components/Dashboard';
 import AddRestaurant from './components/AddRestaurant';
 import { useState } from 'react';
+import myImage from './assets/dark-bg1.jpg'
 
 function App() {
 
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   
   return (
-    <div>
+    <div className={`min-h-screen bg-cover bg-center `}
+    style={{ backgroundImage: `url(${myImage})`,  backgroundAttachment: 'fixed' }}>
     <Navbar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
         <Routes>
           <Route path='/' element={<Home/>} />
@@ -28,7 +30,7 @@ function App() {
           <Route path="/restaurant/new" element={<AddRestaurant/>} />
         </Routes>
 
-    <Footer/>
+    {/* <Footer/> */}
       <Toaster />
     </div>
   )
