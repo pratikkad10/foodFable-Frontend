@@ -50,5 +50,12 @@ export const addReview = (id, data, token) => {
   });
 };
 
+export const searchRestaurants = (city, token) =>{
+  return api.get(`/restaurant/find/${city}`, {
+    headers: {
+      Authorization: `Bearer ${token}`, 
+    },
+  });
+}
 
 

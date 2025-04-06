@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
+import { AppContext } from "../context/RestaurantData";
 
-function Signup({ isLoggedIn, setIsLoggedIn }) {
+function Signup() {
+  const { isLoggedIn, setIsLoggedIn }= useContext(AppContext);
   const [formData, setFormData] = useState({
     email: "",
     name: "",

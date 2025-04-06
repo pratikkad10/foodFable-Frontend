@@ -1,20 +1,53 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { GrRestaurant } from "react-icons/gr";
 import { IoSearchOutline } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
+import { searchRestaurants } from "../services/getService";
+import { AppContext } from "../context/RestaurantData";
 
-function Navbar({isLoggedIn, setIsLoggedIn}) {
+function Navbar() {
   const navigate = useNavigate();
+
+  const {setRestaurants, isLoggedIn, setIsLoggedIn} = useContext(AppContext);
   
+  const [cityname, setCityname] = useState({
+    city: ""
+  });
 
   function handleLogout() {
-    setIsLoggedIn(false); 
+    setIsLoggedIn(false);
     localStorage.removeItem("authToken");
-    navigate("/"); 
+    navigate("/");
   }
 
   function goToHome() {
     navigate("/");
+  }
+
+  function changeHandler(event) {
+    setCityname((prevData) => {
+      return {
+        ...prevData,
+        [event.target.name]: event.target.value
+      };
+    });
+  }
+
+  async function search(event) {
+    event.preventDefault();
+    try {
+      const token = localStorage.getItem("authToken");
+      if(!token){
+        navigate('/user/signin');
+        return;
+      }
+      const response = await searchRestaurants(cityname.city, token);
+      console.log("searched response ", response);
+      setRestaurants(response.data.restaurants);
+    } catch (error) {
+      console.log("error in searchRestaurants function");
+      console.log(error);
+    }
   }
 
   return (
@@ -37,14 +70,16 @@ function Navbar({isLoggedIn, setIsLoggedIn}) {
         </div>
       </div>
 
-      {/* Search and Profile */}
+      
       <div className="flex items-center space-x-4">
         <div className="relative flex gap-4">
-          <form action="">
+          <form action="" onSubmit={search}>
             <input
               type="text"
               className="border rounded-md p-1 pl-2 pr-10 text-zinc-100"
-              placeholder="Search"
+              placeholder="Search by city"
+              name="city"
+              onChange={changeHandler}
             />
             <button>
               <span className="absolute left-50 top-2 cursor-pointer text-gray-900">
@@ -69,7 +104,6 @@ function Navbar({isLoggedIn, setIsLoggedIn}) {
               >
                 Login
               </button>
-              
             </>
           ) : (
             <>

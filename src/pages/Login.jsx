@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import toast from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
+import { AppContext } from "../context/RestaurantData";
 
-function Login({isLoggedIn, setIsLoggedIn}) {
+function Login() {
+  const { isLoggedIn, setIsLoggedIn } = useContext(AppContext);
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
@@ -12,7 +14,6 @@ function Login({isLoggedIn, setIsLoggedIn}) {
 
   async function submitHandler(event) {
     event.preventDefault();
-    // console.log("Login details", formData);
 
     try {
       const response = await fetch(`http://localhost:3000/user/signin`, {

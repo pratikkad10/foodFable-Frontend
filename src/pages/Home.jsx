@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import toast from 'react-hot-toast'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
@@ -6,10 +6,12 @@ import Card from '../components/Card'
 import { getRestaurants } from '../services/getService'
 import Spinner from '../components/Spinner'
 import Loader from '../components/Loader'
+import { AppContext } from '../context/RestaurantData'
 
 function Home() {
   const [isLoading, setIsLoading]=useState(false);
-  const [restaurants, setRestaurants] = useState([]);
+
+  const {restaurants, setRestaurants} = useContext(AppContext);
 
   async function fetchRestaurants(){
       try {
@@ -27,8 +29,9 @@ function Home() {
   }, [])
 
 
+
   return (
-    <div className='flex justify-center gap-4 pb-15 items-center flex-wrap p-4 '>
+    <div className='flex justify-center gap-1 pb-15 items-center flex-wrap p-4 '>
 
       {
         isLoading === true ? (<Loader/>) : (

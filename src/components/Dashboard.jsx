@@ -1,13 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { FaPlus } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import Card from "./Card";
 import toast from "react-hot-toast";
 import { fetchOwnerRestaurants } from "../services/getService";
+import { AppContext } from "../context/RestaurantData";
 
 function Dashboard() {
   const navigate = useNavigate();
-  const [restaurants, setRestaurants] = useState([]);
+  const {restaurants, setRestaurants} = useContext(AppContext);
 
   async function fetchRestaurants() {
     const token = localStorage.getItem("authToken");
